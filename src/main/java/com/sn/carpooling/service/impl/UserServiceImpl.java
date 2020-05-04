@@ -16,9 +16,17 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public String getAllUsers() {
-        System.out.println(userMapper);
-        User user = userMapper.selectByPrimaryKey(1);
-        return user.getUsername();
+    public String getAllUserCounts() {
+        return null;
+    }
+
+    @Override
+    public String getUserInfoByOpenId(String openId) {
+        return null;
+    }
+
+    @Override
+    public String weChatLogin(String code, String rawData, String signature, String encryptedData, String iv) {
+        return null;
     }
 }
