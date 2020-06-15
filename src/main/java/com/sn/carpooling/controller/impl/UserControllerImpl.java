@@ -16,7 +16,6 @@ public class UserControllerImpl implements UserController {
     @Override
     @RequestMapping(value = "/info")
     public String getUserInfo() {
-        String info = userService.getAllUsers();
-        return info;
+        return null;
     }
 }

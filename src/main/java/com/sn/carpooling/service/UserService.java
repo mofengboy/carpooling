@@ -18,7 +18,7 @@ public interface UserService {
      * @param openId 用户开放Id(自定义）
      * @return
      */
-    String getUserInfoByOpenId(String openId);
+    User getUserInfoByOpenId(String openId);
 
     /**
      * 微信小程序登录
@@ -30,6 +30,14 @@ public interface UserService {
      * @param iv            iv
      * @return
      */
-    String weChatLogin(String code, String rawData, String signature, String encryptedData, String iv);
+    User weChatLogin(String code, String rawData, String signature, String encryptedData, String iv);
+
+    /**
+     * 检测用户状态是否正常
+     *
+     * @param openId 用户开放id
+     * @return
+     */
+    boolean isUserActive(String openId);
 
 }
