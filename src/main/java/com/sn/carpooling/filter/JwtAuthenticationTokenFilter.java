@@ -31,8 +31,8 @@ import java.util.Set;
 @Slf4j
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
-//    @Value(value = "${token.expirationMilliSeconds}")
-    private long expirationMilliSeconds =7200000;
+    @Value(value = "${token.expirationMilliSeconds}")
+    private long expirationMilliSeconds;
 
     @Autowired
     SelfUserDetailsService userDetailsService;

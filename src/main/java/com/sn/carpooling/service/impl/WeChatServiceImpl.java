@@ -27,20 +27,14 @@ import java.util.Set;
 @Slf4j
 public class WeChatServiceImpl implements WeChatService {
 
-    //@Value("${weChat.appid}")
-    private String appid = "sdsdf";
+    @Value("${weChat.appid}")
+    private String appid;
 
-    //@Value("${weChat.secret}")
-    private String secret ="sdfdf";
+    @Value("${weChat.secret}")
+    private String secret;
 
     @Autowired
     private RedisUtil redisUtil;
-
-    @Autowired
-    private User user;
-
-    @Autowired
-    private WechatUser wechatUser;
 
     @Override
     public String wxLogin(String code) throws Exception{
@@ -53,6 +47,7 @@ public class WeChatServiceImpl implements WeChatService {
         // 获取用户唯一标识符 openid成功
         // 模拟从数据库获取用户信息
 
+        User user = new User();
 //        user.setId(1L);
         Set authoritiesSet = new HashSet();
         // 模拟从数据库中获取用户权限
