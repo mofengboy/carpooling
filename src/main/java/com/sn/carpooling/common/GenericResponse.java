@@ -7,6 +7,8 @@ public class GenericResponse {
     private Object content;
     private String msg;
 
+
+
     public boolean isSuccess() {
         return success;
     }
@@ -48,6 +50,9 @@ public class GenericResponse {
         this.msg = msg;
         this.content = data;
     }
+
+
+
 
     public static GenericResponse response(ServiceError error) {
 

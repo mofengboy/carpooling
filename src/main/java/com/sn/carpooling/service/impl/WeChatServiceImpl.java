@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.sn.carpooling.common.GenericResponse;
 import com.sn.carpooling.common.ServiceError;
 import com.sn.carpooling.entity.User;
+import com.sn.carpooling.entity.WechatUser;
 import com.sn.carpooling.service.WeChatService;
 import com.sn.carpooling.util.Jcode2SessionUtil;
 import com.sn.carpooling.util.JwtTokenUtil;
@@ -35,8 +36,14 @@ public class WeChatServiceImpl implements WeChatService {
     @Autowired
     private RedisUtil redisUtil;
 
+    @Autowired
+    private User user;
+
+    @Autowired
+    private WechatUser wechatUser;
+
     @Override
-    public GenericResponse wxLogin(String code) throws Exception{
+    public String wxLogin(String code) throws Exception{
         JSONObject sessionInfo = JSONObject.parseObject(jcode2Session(code));
 
         Assert.notNull(sessionInfo,"code 无效");
@@ -45,13 +52,11 @@ public class WeChatServiceImpl implements WeChatService {
 
         // 获取用户唯一标识符 openid成功
         // 模拟从数据库获取用户信息
-        User user = new User();
+
 //        user.setId(1L);
         Set authoritiesSet = new HashSet();
         // 模拟从数据库中获取用户权限
-        authoritiesSet.add(new SimpleGrantedAuthority("test:add"));
-        authoritiesSet.add(new SimpleGrantedAuthority("test:list"));
-        authoritiesSet.add(new SimpleGrantedAuthority("ddd:list"));
+        authoritiesSet.add(new SimpleGrantedAuthority("member"));
         user.setAuthorities(authoritiesSet);
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("id",user.getId().toString());
@@ -59,7 +64,7 @@ public class WeChatServiceImpl implements WeChatService {
         String token = JwtTokenUtil.generateToken(user);
         redisUtil.hset(token,hashMap);
 
-        return GenericResponse.response(ServiceError.NORMAL,token);
+        return token;
     }
 
     /**

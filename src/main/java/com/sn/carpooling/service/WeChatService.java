@@ -12,6 +12,6 @@ public interface WeChatService {
      * @param code
      * @return
      */
-    GenericResponse wxLogin(String code)throws Exception;
+    String wxLogin(String code)throws Exception;
 
 }
