@@ -28,6 +28,7 @@ public class AjaxLogoutSuccessHandler implements LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         //没有logout不走这里、若使用security的formLogin则自己添加业务实现（移除token等等）
+        request.setCharacterEncoding("utf-8");
         response.getWriter().write(JSON.toJSONString(GenericResponse.response(ServiceError.NORMAL)));
     }
 

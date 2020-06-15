@@ -26,7 +26,7 @@ public class JwtTokenUtil {
     public static String generateToken(String subject, int expirationSeconds, Map<String,Object> claims) {
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(subject)//主题
+                .setSubject(subject)//主体
                 //.setExpiration(new Date(System.currentTimeMillis() + expirationSeconds * 1000))
                 .signWith(SignatureAlgorithm.HS512, SALT) // 不使用公钥私钥
                 //.signWith(SignatureAlgorithm.RS256, privateKey)

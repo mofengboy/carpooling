@@ -1,6 +1,7 @@
 package com.sn.carpooling.util;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sn.carpooling.common.HttpUtil;
 import com.sn.carpooling.common.WeChatUrl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.NameValuePair;

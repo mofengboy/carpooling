@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisUtil {
 
-    @Value("${token.expirationMilliSeconds}")
-    private long expirationMilliSeconds;
+   //@Value("${token.expirationMilliSeconds}")
+    private long expirationMilliSeconds =7200000;
 
     //@Autowired
     //private StringRedisTemplate redisTemplate;

@@ -20,6 +20,7 @@ public class AjaxAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
         response.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         response.getWriter().write(JSON.toJSONString(GenericResponse.response(ServiceError.GLOBAL_ERR_NO_AUTHORITY)));
     }
 }

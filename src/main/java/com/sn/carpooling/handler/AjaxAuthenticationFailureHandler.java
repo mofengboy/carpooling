@@ -21,6 +21,7 @@ public class AjaxAuthenticationFailureHandler implements AuthenticationFailureHa
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
         response.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         response.getWriter().write(JSON.toJSONString(GenericResponse.response(ServiceError.GLOBAL_ERR_NO_CODE)));
     }
 

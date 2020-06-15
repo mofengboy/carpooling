@@ -31,8 +31,8 @@ import java.util.Set;
 @Slf4j
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
-    @Value("${token.expirationMilliSeconds}")
-    private long expirationMilliSeconds;
+//    @Value(value = "${token.expirationMilliSeconds}")
+    private long expirationMilliSeconds =7200000;
 
     @Autowired
     SelfUserDetailsService userDetailsService;
@@ -64,7 +64,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         HashMap<String,Object> hashMap = (HashMap<String, Object>) redisUtil.hget(authToken);
         //从tokenInfo中取出用户信息
         User user = new User();
-        user.setId(Long.parseLong(hashMap.get("id").toString())).setAuthorities((Set<? extends GrantedAuthority>) hashMap.get("authorities"));
+        //user.setOpenId(hashMap.get("id").toString()).setAuthorities((Set<? extends GrantedAuthority>) hashMap.get("authorities"));
         if (null == hashMap){
             //用户信息不存在或转换错误，返回错误信息
             response.getWriter().write(JSON.toJSONString(GenericResponse.response(ServiceError.GLOBAL_ERR_NO_SIGN_IN)));

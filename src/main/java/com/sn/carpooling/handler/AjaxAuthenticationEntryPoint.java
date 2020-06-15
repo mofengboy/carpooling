@@ -21,6 +21,7 @@ public class AjaxAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
         request.setCharacterEncoding("utf-8");
+        response.setContentType("text/javascript; charset=utf-8");
         response.getWriter().write(JSON.toJSONString(GenericResponse.response(ServiceError.GLOBAL_ERR_NO_SIGN_IN)));
     }
 }

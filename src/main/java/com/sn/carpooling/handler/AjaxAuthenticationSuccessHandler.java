@@ -29,6 +29,7 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         //自定义login，不走这里、若使用security的formLogin则自己添加业务实现(生成token、存储token等等)
+        request.setCharacterEncoding("utf-8");
         response.getWriter().write(JSON.toJSONString(GenericResponse.response(ServiceError.NORMAL)));
     }
 }

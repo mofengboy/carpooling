@@ -62,6 +62,7 @@ public class GenericResponse {
         if (error.equals(ServiceError.NORMAL)) {
             return GenericResponse.response(true, error.getCode(), error.getMsg(), data);
         }
+//        System.out.println( error.getMsg());
         return GenericResponse.response(false, error.getCode(), error.getMsg(), data);
     }
 

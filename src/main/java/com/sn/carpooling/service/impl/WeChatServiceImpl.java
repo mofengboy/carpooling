@@ -26,11 +26,11 @@ import java.util.Set;
 @Slf4j
 public class WeChatServiceImpl implements WeChatService {
 
-    @Value("${weChat.appid}")
-    private String appid;
+    //@Value("${weChat.appid}")
+    private String appid = "sdsdf";
 
-    @Value("${weChat.secret}")
-    private String secret;
+    //@Value("${weChat.secret}")
+    private String secret ="sdfdf";
 
     @Autowired
     private RedisUtil redisUtil;
@@ -46,7 +46,7 @@ public class WeChatServiceImpl implements WeChatService {
         // 获取用户唯一标识符 openid成功
         // 模拟从数据库获取用户信息
         User user = new User();
-        user.setId(1L);
+//        user.setId(1L);
         Set authoritiesSet = new HashSet();
         // 模拟从数据库中获取用户权限
         authoritiesSet.add(new SimpleGrantedAuthority("test:add"));
