@@ -50,6 +50,12 @@ public class GenericResponse {
         this.msg = msg;
         this.content = data;
     }
+    public GenericResponse(boolean success, int code, String msg) {
+
+        this.success = success;
+        this.statusCode = code;
+        this.msg = msg;
+    }
 
 
 
@@ -74,5 +80,8 @@ public class GenericResponse {
     public static GenericResponse response(boolean success, int code, String msg, Object data) {
 
         return new GenericResponse(success, code, msg, data);
+    }
+    public static GenericResponse response(boolean success, int code, String msg) {
+        return new GenericResponse(success, code, msg);
     }
 }

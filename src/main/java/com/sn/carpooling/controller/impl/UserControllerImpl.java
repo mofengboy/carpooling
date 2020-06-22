@@ -28,10 +28,11 @@ public class UserControllerImpl implements UserController {
     @RequestMapping(value = "/weChatLogin")
     public GenericResponse login(String code){
         try {
+
             return GenericResponse.response(ServiceError.NORMAL,weChatService.wxLogin(code));
         } catch (Exception e) {
             System.out.println(e);
-            return GenericResponse.response(false,-1,e.getMessage(),null);
+            return GenericResponse.response(false,-1,e.getMessage());
         }
     }
 
